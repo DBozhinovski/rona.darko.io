@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `greater-gatsby`,
-    description: `BAREBONES and LIGHTWEIGHT GatsbyJS Default Starter with Typescript, PostCSS, Storybook, & Tailwind CSS`,
-    author: `@rbutera`,
+    title: `'Rona`,
+    description: `Is that you 'Rona?`,
+    author: `@dbozhinovski`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,12 +24,19 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/greater-gatsby-emblem-only.svg`, // This path is relative to the root of the site.
+        icon: `src/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-source-remote-file',
+      options: {
+        url: 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/',
+        name: 'ecdcStats'
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-postcss`,
   ],

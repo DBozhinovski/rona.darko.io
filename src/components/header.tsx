@@ -4,7 +4,7 @@ import Logo from "./logo"
 
 const Header: React.FunctionComponent = () => (
   <header>
-    <Logo />
+    {/* <Logo /> */}
   </header>
 )
 

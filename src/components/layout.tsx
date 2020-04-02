@@ -25,14 +25,14 @@ const Layout: React.FunctionComponent = ({ children }) => {
       <Header />
       <div>
         <main>{children}</main>
-        <Footer>
+        {/* <Footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a> +{" "}
           <a href="https://www.github.com/rbutera/greater-gatsby">
             greater-gatsby
           </a>
-        </Footer>
+        </Footer> */}
       </div>
     </>
   )
