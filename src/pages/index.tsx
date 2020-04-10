@@ -10,6 +10,8 @@ import { GlobalStats } from '../components/GlobalStats';
 import { LocalStats } from '../components/LocalStats';
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 75ch;
 `;
 
