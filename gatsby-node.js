@@ -52,39 +52,41 @@ exports.onCreateNode = async ({
 };
 
 exports.sourceNodes = async ({actions, createContentDigest}) => {
+  const { createNode } = actions;
+
   await wikiParser(actions, createContentDigest);
   await whoParser(actions, createContentDigest);
-  // const {createNode} = actions;
+  
+  const lastScrapedAt = new Date();
 
-  // const res = await axios.get('https://en.wikipedia.org/wiki/Template:2019%E2%80%9320_coronavirus_pandemic_data');
-  // const $ = cheerio.load(res.data);
+  let dd = lastScrapedAt.getDate();
+  let mm = lastScrapedAt.getMonth()+1; 
+  const yyyy = lastScrapedAt.getFullYear();
+  
+  if(dd<10) 
+  {
+      dd=`0${dd}`;
+  } 
 
-  // const lookupTable = [false, 'name', 'cases', 'deaths', 'recovered', false];
+  if(mm<10) 
+  {
+      mm=`0${mm}`;
+  } 
 
-  // $('#covid19-container>table').children().not('thead').children('tr').not('.sortbottom').each(function (i) {
-  //   const countryData = {};
+  const lastScrapedAtNode = {
+    date: dd,
+    month: mm,
+    year: yyyy,
+  };
 
-  //   $(this).children('th, td').each(function (i) {
-  //     if (lookupTable[i]) {
-  //       countryData[lookupTable[i]] = $(this).text();
-  //     }
-  //   });
-
-  //   if (i === 0 || i === 1) {
-  //     return;
-  //   }
-
-  //   const wikiCountryNode = {
-  //     id: `wnode-${i}`,
-  //     parent: '__SOURCE__',
-  //     internal: {
-  //       type: 'WikiCountry',
-  //       contentDigest: createContentDigest(countryData)
-  //     },
-  //     children: [],
-  //     ...countryData
-  //   };
-
-  //   createNode(wikiCountryNode);
-  // });
+  createNode({
+    id: `lastScraped`,
+    parent: '__SOURCE__',
+    internal: {
+      type: 'LastScraped',
+      contentDigest: createContentDigest(lastScrapedAtNode),
+    },
+    children: [],
+    ...lastScrapedAtNode,
+  });
 }

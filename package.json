@@ -21,7 +21,6 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-source-remote-file": "^0.1.9",
     "gatsby-transformer-sharp": "^2.3.7",
-    "node-nlp": "^4.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.8",
     "react-dom": "^16.8",

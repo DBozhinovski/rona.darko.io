@@ -47,12 +47,18 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
 
   const whoTotal = data.allWhoTotal.nodes[0];
 
+  const lastScrapedAt = data.allLastScraped.nodes[0];
+
   return (
     <Layout>
       <Container>
         <SEO title="RONA"/>
         <h1>Current COVID-19 world wide status</h1>
-        <blockquote><small>Note: due to scraping times, data sources may show different results.</small></blockquote>
+        <blockquote>
+          <small>Note: due to scraping times, data sources may show different results.</small>
+          <br/>
+          <small>(Last updated on: {`${lastScrapedAt.year}-${lastScrapedAt.month}-${lastScrapedAt.date} at 16:00 (GMT+1)`})</small>
+        </blockquote>
         <br />
         <GlobalStats wikiTotal={wikiTotal} whoTotal={whoTotal} ecdcTotal={ecdcTotal} />
         <br />
@@ -111,6 +117,13 @@ export const query = graphql`
         cases
         deaths
         recovered
+      }
+    }
+    allLastScraped {
+      nodes {
+        date
+        month
+        year
       }
     }
   }
