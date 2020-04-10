@@ -39,7 +39,11 @@
           "useStemDict": true
         },
         "stemDict": {
-          "0,3321,7,82631,86,china,local,transmiss": {
+          "1": {
+            "intent": "filter",
+            "domain": "default"
+          },
+          "0,3321,7,82631,86,case,china,cluster,of": {
             "intent": "keep",
             "domain": "default"
           },
@@ -67,51 +71,51 @@
             "intent": "keep",
             "domain": "default"
           },
-          "and,both,case,domest,includ,number,repatri": {
+          "territori": {
             "intent": "filter",
             "domain": "default"
           },
-          "arebas,case,classif,covid-19,definitionsfor,on,who": {
+          "**": {
             "intent": "filter",
             "domain": "default"
           },
-          "and,case,consolid,data,delay,differ,due,in,maynotalway,method,new,number,of,report,retrospect,the,to": {
+          "region": {
             "intent": "filter",
             "domain": "default"
           },
-          "adapt,all,balanc,be,can,communiti,diseas,encourag,health,measur,public,spread,stop,strategi,to,with": {
+          "pacif,region,western": {
             "intent": "filter",
             "domain": "default"
           },
-          "and,communiti,connect,famili,flexibl,for,general,includ,introduc,measur,public,the,within,work": {
+          "day,last,sinc": {
             "intent": "filter",
             "domain": "default"
           },
-          "1,april2020,area,case,confirm,countri,covid-19,figur,of,or,report,territori,with": {
+          "case,report": {
             "intent": "filter",
             "domain": "default"
           },
-          "3,a,an,build,centr,exist,into,modul,repurpos,sari,treatment,▪": {
+          "classif": {
             "intent": "filter",
             "domain": "default"
           },
-          "current,develop,facil,for,instal,is,sari,under": {
+          "countri,report": {
             "intent": "filter",
             "domain": "default"
           },
-          "new": {
+          "*": {
             "intent": "filter",
             "domain": "default"
           },
-          "transmiss": {
+          "area,territori": {
             "intent": "filter",
             "domain": "default"
           },
-          "mariana,northern": {
+          "‡": {
             "intent": "filter",
             "domain": "default"
           },
-          "the": {
+          "†": {
             "intent": "filter",
             "domain": "default"
           }
@@ -123,7 +127,7 @@
         "sentences": [
           {
             "domain": "default",
-            "utterance": "China 82631 86 3321 7 Local transmission 0",
+            "utterance": "China 82631 86 3321 7 Cluster of Cases 0",
             "intent": "keep"
           },
           {
@@ -158,62 +162,67 @@
           },
           {
             "domain": "default",
-            "utterance": "Numbers include both domestic and repatriated case",
+            "utterance": "Territories",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "Case classifications arebased on WHO case definitionsfor COVID-19.",
+            "utterance": "**",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "Due to differences in reporting methods, retrospective data consolidation, and reporting delays, the number of new cases maynotalways",
+            "utterance": "[1]",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "All public health measures to stop disease spread can be balanced with adaptive strategies to encourage community ",
+            "utterance": "Regions",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "connection within families and communities. Measures for the general public include introducing flexible work",
+            "utterance": "Western Pacific Region",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "Figure 1. Countries, territories or areas with reported confirmed cases of COVID-19, 1 April2020",
+            "utterance": "Days since last",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "▪ Module 3: Repurposing an existing building into a SARI treatment centre ",
+            "utterance": "reported case",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "installations for SARI facilities is currently under development. ",
+            "utterance": "classification",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "new ",
+            "utterance": "Reporting Country/",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "Transmission ",
+            "utterance": "*",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "Northern Mariana ",
+            "utterance": "Territory/Area",
             "intent": "filter"
           },
           {
             "domain": "default",
-            "utterance": "the) ",
+            "utterance": "‡",
+            "intent": "filter"
+          },
+          {
+            "domain": "default",
+            "utterance": "†",
             "intent": "filter"
           }
         ],
@@ -253,20 +262,21 @@
               "25154": 1,
               "82631": 1,
               "china": 1,
-              "local": 1,
-              "transmiss": 1,
+              "cluster": 1,
+              "of": 1,
+              "case": 1,
               "papua": 1,
               "new": 1,
               "guinea": 1,
               "import": 1,
-              "case": 1,
               "onli": 1,
               "zealand": 1,
+              "local": 1,
+              "transmiss": 1,
               "northern": 1,
               "mariana": 1,
               "island": 1,
               "commonwealth": 1,
-              "of": 1,
               "the": 1,
               "under": 1,
               "investig": 1,
@@ -274,75 +284,21 @@
               "kingdom": 1,
               "austria": 1,
               "liechtenstein": 1,
-              "number": 1,
-              "includ": 1,
-              "both": 1,
-              "domest": 1,
-              "and": 1,
-              "repatri": 1,
-              "classif": 1,
-              "arebas": 1,
-              "on": 1,
-              "who": 1,
-              "definitionsfor": 1,
-              "covid-19": 1,
-              "due": 1,
-              "to": 1,
-              "differ": 1,
-              "in": 1,
-              "report": 1,
-              "method": 1,
-              "retrospect": 1,
-              "data": 1,
-              "consolid": 1,
-              "delay": 1,
-              "maynotalway": 1,
-              "all": 1,
-              "public": 1,
-              "health": 1,
-              "measur": 1,
-              "stop": 1,
-              "diseas": 1,
-              "spread": 1,
-              "can": 1,
-              "be": 1,
-              "balanc": 1,
-              "with": 1,
-              "adapt": 1,
-              "strategi": 1,
-              "encourag": 1,
-              "communiti": 1,
-              "connect": 1,
-              "within": 1,
-              "famili": 1,
-              "for": 1,
-              "general": 1,
-              "introduc": 1,
-              "flexibl": 1,
-              "work": 1,
-              "figur": 1,
-              "countri": 1,
               "territori": 1,
-              "or": 1,
+              "**": 1,
+              "region": 1,
+              "western": 1,
+              "pacif": 1,
+              "day": 1,
+              "sinc": 1,
+              "last": 1,
+              "report": 1,
+              "classif": 1,
+              "countri": 1,
+              "*": 1,
               "area": 1,
-              "confirm": 1,
-              "april2020": 1,
-              "▪": 1,
-              "modul": 1,
-              "repurpos": 1,
-              "an": 1,
-              "exist": 1,
-              "build": 1,
-              "into": 1,
-              "a": 1,
-              "sari": 1,
-              "treatment": 1,
-              "centr": 1,
-              "instal": 1,
-              "facil": 1,
-              "is": 1,
-              "current": 1,
-              "develop": 1
+              "‡": 1,
+              "†": 1
             },
             "intents": {
               "keep": 1,
@@ -372,20 +328,21 @@
                 "25154",
                 "82631",
                 "china",
-                "local",
-                "transmiss",
+                "cluster",
+                "of",
+                "case",
                 "papua",
                 "new",
                 "guinea",
                 "import",
-                "case",
                 "onli",
                 "zealand",
+                "local",
+                "transmiss",
                 "northern",
                 "mariana",
                 "island",
                 "commonwealth",
-                "of",
                 "the",
                 "under",
                 "investig",
@@ -396,84 +353,22 @@
               ],
               "filter": [
                 "1",
-                "3",
-                "number",
-                "includ",
-                "both",
-                "domest",
-                "and",
-                "repatri",
+                "territori",
+                "**",
+                "region",
+                "western",
+                "pacif",
+                "day",
+                "sinc",
+                "last",
+                "report",
                 "case",
                 "classif",
-                "arebas",
-                "on",
-                "who",
-                "definitionsfor",
-                "covid-19",
-                "due",
-                "to",
-                "differ",
-                "in",
-                "report",
-                "method",
-                "retrospect",
-                "data",
-                "consolid",
-                "delay",
-                "the",
-                "of",
-                "new",
-                "maynotalway",
-                "all",
-                "public",
-                "health",
-                "measur",
-                "stop",
-                "diseas",
-                "spread",
-                "can",
-                "be",
-                "balanc",
-                "with",
-                "adapt",
-                "strategi",
-                "encourag",
-                "communiti",
-                "connect",
-                "within",
-                "famili",
-                "for",
-                "general",
-                "introduc",
-                "flexibl",
-                "work",
-                "figur",
                 "countri",
-                "territori",
-                "or",
+                "*",
                 "area",
-                "confirm",
-                "april2020",
-                "▪",
-                "modul",
-                "repurpos",
-                "an",
-                "exist",
-                "build",
-                "into",
-                "a",
-                "sari",
-                "treatment",
-                "centr",
-                "instal",
-                "facil",
-                "is",
-                "current",
-                "under",
-                "develop",
-                "transmiss",
-                "northern",
-                "mariana"
+                "‡",
+                "†"
               ]
             },
             "featuresToIntent": {
@@ -488,8 +383,7 @@
                 "keep"
               ],
               "3": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "4": [
                 "keep"
@@ -545,10 +439,13 @@
               "china": [
                 "keep"
               ],
-              "local": [
+              "cluster": [
                 "keep"
               ],
-              "transmiss": [
+              "of": [
+                "keep"
+              ],
+              "case": [
                 "keep",
                 "filter"
               ],
@@ -556,8 +453,7 @@
                 "keep"
               ],
               "new": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "guinea": [
                 "keep"
@@ -565,23 +461,23 @@
               "import": [
                 "keep"
               ],
-              "case": [
-                "keep",
-                "filter"
-              ],
               "onli": [
                 "keep"
               ],
               "zealand": [
                 "keep"
               ],
+              "local": [
+                "keep"
+              ],
+              "transmiss": [
+                "keep"
+              ],
               "northern": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "mariana": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "island": [
                 "keep"
@@ -589,17 +485,11 @@
               "commonwealth": [
                 "keep"
               ],
-              "of": [
-                "keep",
-                "filter"
-              ],
               "the": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "under": [
-                "keep",
-                "filter"
+                "keep"
               ],
               "investig": [
                 "keep"
@@ -616,211 +506,49 @@
               "liechtenstein": [
                 "keep"
               ],
-              "number": [
+              "territori": [
                 "filter"
               ],
-              "includ": [
+              "**": [
                 "filter"
               ],
-              "both": [
+              "region": [
                 "filter"
               ],
-              "domest": [
+              "western": [
                 "filter"
               ],
-              "and": [
+              "pacif": [
                 "filter"
               ],
-              "repatri": [
+              "day": [
                 "filter"
               ],
-              "classif": [
+              "sinc": [
                 "filter"
               ],
-              "arebas": [
-                "filter"
-              ],
-              "on": [
-                "filter"
-              ],
-              "who": [
-                "filter"
-              ],
-              "definitionsfor": [
-                "filter"
-              ],
-              "covid-19": [
-                "filter"
-              ],
-              "due": [
-                "filter"
-              ],
-              "to": [
-                "filter"
-              ],
-              "differ": [
-                "filter"
-              ],
-              "in": [
+              "last": [
                 "filter"
               ],
               "report": [
                 "filter"
               ],
-              "method": [
-                "filter"
-              ],
-              "retrospect": [
-                "filter"
-              ],
-              "data": [
-                "filter"
-              ],
-              "consolid": [
-                "filter"
-              ],
-              "delay": [
-                "filter"
-              ],
-              "maynotalway": [
-                "filter"
-              ],
-              "all": [
-                "filter"
-              ],
-              "public": [
-                "filter"
-              ],
-              "health": [
-                "filter"
-              ],
-              "measur": [
-                "filter"
-              ],
-              "stop": [
-                "filter"
-              ],
-              "diseas": [
-                "filter"
-              ],
-              "spread": [
-                "filter"
-              ],
-              "can": [
-                "filter"
-              ],
-              "be": [
-                "filter"
-              ],
-              "balanc": [
-                "filter"
-              ],
-              "with": [
-                "filter"
-              ],
-              "adapt": [
-                "filter"
-              ],
-              "strategi": [
-                "filter"
-              ],
-              "encourag": [
-                "filter"
-              ],
-              "communiti": [
-                "filter"
-              ],
-              "connect": [
-                "filter"
-              ],
-              "within": [
-                "filter"
-              ],
-              "famili": [
-                "filter"
-              ],
-              "for": [
-                "filter"
-              ],
-              "general": [
-                "filter"
-              ],
-              "introduc": [
-                "filter"
-              ],
-              "flexibl": [
-                "filter"
-              ],
-              "work": [
-                "filter"
-              ],
-              "figur": [
+              "classif": [
                 "filter"
               ],
               "countri": [
                 "filter"
               ],
-              "territori": [
-                "filter"
-              ],
-              "or": [
+              "*": [
                 "filter"
               ],
               "area": [
                 "filter"
               ],
-              "confirm": [
+              "‡": [
                 "filter"
               ],
-              "april2020": [
-                "filter"
-              ],
-              "▪": [
-                "filter"
-              ],
-              "modul": [
-                "filter"
-              ],
-              "repurpos": [
-                "filter"
-              ],
-              "an": [
-                "filter"
-              ],
-              "exist": [
-                "filter"
-              ],
-              "build": [
-                "filter"
-              ],
-              "into": [
-                "filter"
-              ],
-              "a": [
-                "filter"
-              ],
-              "sari": [
-                "filter"
-              ],
-              "treatment": [
-                "filter"
-              ],
-              "centr": [
-                "filter"
-              ],
-              "instal": [
-                "filter"
-              ],
-              "facil": [
-                "filter"
-              ],
-              "is": [
-                "filter"
-              ],
-              "current": [
-                "filter"
-              ],
-              "develop": [
+              "†": [
                 "filter"
               ]
             },
@@ -848,20 +576,21 @@
                 "25154",
                 "82631",
                 "china",
-                "local",
-                "transmiss",
+                "cluster",
+                "of",
+                "case",
                 "papua",
                 "new",
                 "guinea",
                 "import",
-                "case",
                 "onli",
                 "zealand",
+                "local",
+                "transmiss",
                 "northern",
                 "mariana",
                 "island",
                 "commonwealth",
-                "of",
                 "the",
                 "under",
                 "investig",
@@ -869,75 +598,21 @@
                 "kingdom",
                 "austria",
                 "liechtenstein",
-                "number",
-                "includ",
-                "both",
-                "domest",
-                "and",
-                "repatri",
-                "classif",
-                "arebas",
-                "on",
-                "who",
-                "definitionsfor",
-                "covid-19",
-                "due",
-                "to",
-                "differ",
-                "in",
-                "report",
-                "method",
-                "retrospect",
-                "data",
-                "consolid",
-                "delay",
-                "maynotalway",
-                "all",
-                "public",
-                "health",
-                "measur",
-                "stop",
-                "diseas",
-                "spread",
-                "can",
-                "be",
-                "balanc",
-                "with",
-                "adapt",
-                "strategi",
-                "encourag",
-                "communiti",
-                "connect",
-                "within",
-                "famili",
-                "for",
-                "general",
-                "introduc",
-                "flexibl",
-                "work",
-                "figur",
-                "countri",
                 "territori",
-                "or",
+                "**",
+                "region",
+                "western",
+                "pacif",
+                "day",
+                "sinc",
+                "last",
+                "report",
+                "classif",
+                "countri",
+                "*",
                 "area",
-                "confirm",
-                "april2020",
-                "▪",
-                "modul",
-                "repurpos",
-                "an",
-                "exist",
-                "build",
-                "into",
-                "a",
-                "sari",
-                "treatment",
-                "centr",
-                "instal",
-                "facil",
-                "is",
-                "current",
-                "develop"
+                "‡",
+                "†"
               ],
               "intents": [
                 "keep",
@@ -945,234 +620,128 @@
               ],
               "perceptrons": [
                 [
-                  5.903253555297852,
-                  0.7446539402008057,
-                  0.7446539402008057,
-                  0.7446539402008057,
-                  0.7446539402008057,
-                  0.7446539402008057,
-                  2.713646173477173,
-                  0.5722393989562988,
-                  1.506101131439209,
-                  1.2057863473892212,
-                  1.2057863473892212,
-                  0.30221036076545715,
-                  1.2057863473892212,
-                  1.2057863473892212,
-                  -0.8125983476638794,
-                  1.2057863473892212,
-                  0.6388401985168457,
-                  0.6388401985168457,
-                  0.6388401985168457,
-                  0.8715826869010925,
-                  0.5891106724739075,
-                  0.12058013677597046,
-                  0.12058013677597046,
-                  0.8715826869010925,
-                  0.8715826869010925,
-                  -0.30810466408729553,
-                  0.20667454600334167,
-                  1.6926021575927734,
-                  1.9838204383850098,
-                  0.5865598320960999,
-                  0.5865598320960999,
-                  0.5865598320960999,
-                  0.5865598320960999,
-                  0.5865598320960999,
-                  0.5865598320960999,
-                  0.7435919642448425,
-                  0.7435919642448425,
-                  0.7435919642448425,
-                  0.7435919642448425,
-                  0.7435919642448425,
-                  1.1122376918792725,
-                  1.1122376918792725,
-                  1.1122376918792725,
-                  -1.2847195863723755,
-                  -0.5629749894142151,
-                  -0.44355717301368713,
-                  -0.44355717301368713,
-                  -1.404137372970581,
-                  -0.44355717301368713,
-                  -0.39514002203941345,
-                  -0.39514002203941345,
-                  -0.39514002203941345,
-                  -0.39514002203941345,
-                  -0.39514002203941345,
-                  -0.733664870262146,
-                  -0.8411623239517212,
-                  -0.9910204410552979,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -1.1796871423721313,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -0.8411623239517212,
-                  -0.14985807240009308,
-                  -0.2692759037017822,
-                  -0.14985807240009308,
-                  -0.2692759037017822,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.4883829653263092,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.14985807240009308,
-                  -0.2692759037017822,
-                  -0.11941783130168915,
-                  -0.11941783130168915,
-                  -0.11941783130168915,
-                  -0.41063597798347473,
-                  -0.11941783130168915,
-                  -0.11941783130168915,
-                  -0.11941783130168915,
-                  -0.11941783130168915,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.33852487802505493,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.5736899375915527,
-                  -0.2824718952178955,
-                  -0.2824718952178955,
-                  -0.291218101978302,
-                  -0.291218101978302,
-                  -0.291218101978302,
-                  -0.291218101978302,
-                  -0.291218101978302,
-                  -0.4256509748338747
+                  5.23383092880249,
+                  0.8504647612571716,
+                  0.8504647612571716,
+                  0.8504647612571716,
+                  0.8504647612571716,
+                  0.8504647612571716,
+                  0.8504647612571716,
+                  1.1770039796829224,
+                  0.9161872267723083,
+                  0.03149119019508362,
+                  0.9323070049285889,
+                  0.9323070049285889,
+                  1.5777060985565186,
+                  0.9323070049285889,
+                  0.9323070049285889,
+                  0.9323070049285889,
+                  0.6453989744186401,
+                  0.6453989744186401,
+                  0.6453989744186401,
+                  1.8176367282867432,
+                  1.8176367282867432,
+                  0.32653921842575073,
+                  0.32653921842575073,
+                  0.32653921842575073,
+                  0.32653921842575073,
+                  0.32653921842575073,
+                  0.32653921842575073,
+                  0.7877383232116699,
+                  1.6334238052368164,
+                  1.6334238052368164,
+                  0.46119898557662964,
+                  0.46119898557662964,
+                  0.46119898557662964,
+                  0.46119898557662964,
+                  0.46119898557662964,
+                  0.46119898557662964,
+                  0.7110382914543152,
+                  0.7110382914543152,
+                  0.7110382914543152,
+                  0.7110382914543152,
+                  0.7110382914543152,
+                  1.3068846464157104,
+                  1.3068846464157104,
+                  1.3068846464157104,
+                  -0.4762256443500519,
+                  -0.3806236982345581,
+                  -0.46906405687332153,
+                  -0.20525778830051422,
+                  -0.20525778830051422,
+                  -0.20670445263385773,
+                  -0.20670445263385773,
+                  -0.20670445263385773,
+                  -1.0013110637664795,
+                  -0.2709142565727234,
+                  -0.1347263604402542,
+                  -0.2559567987918854,
+                  -0.11601892858743668,
+                  -0.2436540722846985,
+                  -0.2352549135684967,
+                  0.07082874538789656
                 ],
                 [
-                  -6.20452356338501,
-                  -0.6757350564002991,
-                  -0.6757350564002991,
-                  -0.6757350564002991,
-                  -0.6757350564002991,
-                  -0.6757350564002991,
-                  -3.456922769546509,
-                  3.126502275466919,
-                  -1.866681456565857,
-                  -1.1236480474472046,
-                  -1.1236480474472046,
-                  3.324638843536377,
-                  -1.1236480474472046,
-                  -1.1236480474472046,
-                  0.26075664162635803,
-                  -1.1236480474472046,
-                  -1.336111068725586,
-                  -1.336111068725586,
-                  -1.336111068725586,
-                  -1.5406498908996582,
-                  -1.1789538860321045,
-                  1.7615156173706055,
-                  1.7615156173706055,
-                  -1.5406498908996582,
-                  -1.5406498908996582,
-                  -1.2572340965270996,
-                  3.086467742919922,
-                  -1.020450472831726,
-                  -1.6239527463912964,
-                  -0.9366230964660645,
-                  -0.9366230964660645,
-                  -0.9366230964660645,
-                  -0.9366230964660645,
-                  -0.9366230964660645,
-                  -0.9366230964660645,
-                  -0.5084529519081116,
-                  -0.5084529519081116,
-                  -0.5084529519081116,
-                  -0.5084529519081116,
-                  -0.5084529519081116,
-                  -0.08330275118350983,
-                  -0.08330275118350983,
-                  -0.08330275118350983,
-                  0.3657667934894562,
-                  0.5220295190811157,
-                  0.675428032875061,
-                  0.675428032875061,
-                  0.2123676985502243,
-                  0.675428032875061,
-                  0.42556026577949524,
-                  0.42556026577949524,
-                  0.42556026577949524,
-                  0.42556026577949524,
-                  0.42556026577949524,
-                  1.0186375379562378,
-                  -0.30966147780418396,
-                  -0.08637823909521103,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  0.28341591358184814,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  -0.30966147780418396,
-                  0.22328345477581024,
-                  0.06988464295864105,
-                  0.22328345477581024,
-                  0.06988464295864105,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.8163607716560364,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.22328345477581024,
-                  0.06988464295864105,
-                  -0.15339884161949158,
-                  -0.15339884161949158,
-                  -0.15339884161949158,
-                  0.4501032531261444,
-                  -0.15339884161949158,
-                  -0.15339884161949158,
-                  -0.15339884161949158,
-                  -0.15339884161949158,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.5930773019790649,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.9651985168457031,
-                  0.3616960942745209,
-                  0.3616960942745209,
-                  0.6035022139549255,
-                  0.6035022139549255,
-                  0.6035022139549255,
-                  0.6035022139549255,
-                  0.6035022139549255,
-                  9.11994413958824
+                  -4.751214504241943,
+                  -0.8093463182449341,
+                  -0.8093463182449341,
+                  -0.8093463182449341,
+                  -0.8093463182449341,
+                  -0.8093463182449341,
+                  -0.8093463182449341,
+                  -1.1481181383132935,
+                  0.09256307035684586,
+                  2.2869787216186523,
+                  -1.1274452209472656,
+                  -1.1274452209472656,
+                  -1.9306068420410156,
+                  -1.1274452209472656,
+                  -1.1274452209472656,
+                  -1.1274452209472656,
+                  -0.8031619191169739,
+                  -0.8031619191169739,
+                  -0.8031619191169739,
+                  -1.567873239517212,
+                  -1.567873239517212,
+                  -0.33877164125442505,
+                  -0.33877164125442505,
+                  -0.33877164125442505,
+                  -0.33877164125442505,
+                  -0.33877164125442505,
+                  -0.33877164125442505,
+                  -0.6579480767250061,
+                  -1.2465505599975586,
+                  -1.2465505599975586,
+                  -0.31917640566825867,
+                  -0.31917640566825867,
+                  -0.31917640566825867,
+                  -0.31917640566825867,
+                  -0.31917640566825867,
+                  -0.31917640566825867,
+                  -0.4455346465110779,
+                  -0.4455346465110779,
+                  -0.4455346465110779,
+                  -0.4455346465110779,
+                  -0.4455346465110779,
+                  -0.9077793955802917,
+                  -0.9077793955802917,
+                  -0.9077793955802917,
+                  2.3139209747314453,
+                  2.6197075843811035,
+                  2.384385585784912,
+                  0.09592979401350021,
+                  0.09592979401350021,
+                  0.8463698625564575,
+                  0.8463698625564575,
+                  0.8463698625564575,
+                  2.332070827484131,
+                  2.521782875061035,
+                  0.30271682143211365,
+                  2.508375644683838,
+                  0.38372892141342163,
+                  2.49312162399292,
+                  2.464901924133301,
+                  9.976130898052576
                 ]
               ],
               "perceptronSettings": {
@@ -1196,7 +765,7 @@
     "extraSentences": [
       [
         "en",
-        "China 82631 86 3321 7 Local transmission 0"
+        "China 82631 86 3321 7 Cluster of Cases 0"
       ],
       [
         "en",
@@ -1224,51 +793,55 @@
       ],
       [
         "en",
-        "Numbers include both domestic and repatriated case"
+        "Territories"
       ],
       [
         "en",
-        "Case classifications arebased on WHO case definitionsfor COVID-19."
+        "**"
       ],
       [
         "en",
-        "Due to differences in reporting methods, retrospective data consolidation, and reporting delays, the number of new cases maynotalways"
+        "[1]"
       ],
       [
         "en",
-        "All public health measures to stop disease spread can be balanced with adaptive strategies to encourage community "
+        "Regions"
       ],
       [
         "en",
-        "connection within families and communities. Measures for the general public include introducing flexible work"
+        "Western Pacific Region"
       ],
       [
         "en",
-        "Figure 1. Countries, territories or areas with reported confirmed cases of COVID-19, 1 April2020"
+        "Days since last"
       ],
       [
         "en",
-        "▪ Module 3: Repurposing an existing building into a SARI treatment centre "
+        "reported case"
       ],
       [
         "en",
-        "installations for SARI facilities is currently under development. "
+        "classification"
       ],
       [
         "en",
-        "new "
+        "Reporting Country/"
       ],
       [
         "en",
-        "Transmission "
+        "*"
       ],
       [
         "en",
-        "Northern Mariana "
+        "Territory/Area"
       ],
       [
         "en",
-        "the) "
+        "‡"
+      ],
+      [
+        "en",
+        "†"
       ]
     ]
   },

@@ -10,14 +10,14 @@ const scrapeWikipedia = async (actions, createContentDigest) => {
   const res = await axios.get('https://en.wikipedia.org/wiki/Template:2019%E2%80%9320_coronavirus_pandemic_data');
   const $ = cheerio.load(res.data);
 
-  const lookupTable = [false, 'name', 'cases', 'deaths', 'recovered', false];
+  const lookupTable = ['flag', 'name', 'cases', 'deaths', 'recovered', 'ref'];
 
   $('#covid19-container>table').children().not('thead').children('tr').not('.sortbottom').each(function (i) {
     const countryData = {};
 
     $(this).children('th, td').each(function (i) {
       if (lookupTable[i]) {
-        countryData[lookupTable[i]] = $(this).text().replace(/(\[.*\])?\\n/g, '');
+        countryData[lookupTable[i]] = $(this).text().replace(/\[.*\]|\(.*\)|\n|,/g, '').trim();
 
         if (lookupTable[i] !== 'name') {
           countryData[lookupTable[i]] = parseInt(countryData[lookupTable[i]].replace(',', ''), 10);
@@ -25,7 +25,26 @@ const scrapeWikipedia = async (actions, createContentDigest) => {
       }
     });
 
-    if (i === 0 || i === 1) {
+    if (i === 0) {
+      return;
+    }
+
+    if (i === 1) {
+      // Fix offset, quick-n-dirty XD
+      const wikiTotalNode = {
+        id: `wnode-total`,
+        parent: '__SOURCE__',
+        internal: {
+          type: 'WikiCountryTotal',
+          contentDigest: createContentDigest(countryData),
+        },
+        children: [],
+        cases: parseInt(countryData.name, 10),
+        deaths: countryData.cases,
+        recovered: countryData.deaths,
+      };
+
+      createNode(wikiTotalNode);
       return;
     }
 
@@ -34,7 +53,7 @@ const scrapeWikipedia = async (actions, createContentDigest) => {
       parent: '__SOURCE__',
       internal: {
         type: 'WikiCountry',
-        contentDigest: createContentDigest(countryData)
+        contentDigest: createContentDigest(countryData),
       },
       children: [],
       ...countryData

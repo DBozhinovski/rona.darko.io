@@ -1,44 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const crawler = require('crawler-request');
-const {NlpManager} = require('node-nlp');
-
-const positiveExamples = [
-  'China 82631 86 3321 7 Local transmission 0',
-  'Papua New Guinea 1 0 0 0 Imported cases only 11',
-  'New Zealand 647 47 1 0 Local transmission 0',
-  'Northern Mariana Islands (Commonwealth of the) 2 0 0 0 Under investigation 3',
-  'The United Kingdom 25154 3009 1789 381 Local transmission 0',
-  'Austria 10182 564 128 20 Local transmission 0',
-  'Liechtenstein 68 4 0 0 Under investigation 0'
-];
-
-const negativeExamples = [
-  'Numbers include both domestic and repatriated case',
-  'Case classifications arebased on WHO case definitionsfor COVID-19.',
-  'Due to differences in reporting methods, retrospective data consolidation, and reporting delays, the number of new cases maynotalways',
-  'All public health measures to stop disease spread can be balanced with adaptive strategies to encourage community ',
-  'connection within families and communities. Measures for the general public include introducing flexible work',
-  'Figure 1. Countries, territories or areas with reported confirmed cases of COVID-19, 1 April2020',
-  '▪ Module 3: Repurposing an existing building into a SARI treatment centre ',
-  'installations for SARI facilities is currently under development. ',
-  'new ',
-  'Transmission ',
-  'Northern Mariana ',
-  'the) '
-];
-
-const train = async () => {
-  const manager = new NlpManager({languages: ['en'], nlu: {log: true, useNoneFeature: false}});
-
-  positiveExamples.forEach(e => manager.addDocument('en', e, 'keep'));
-  negativeExamples.forEach(e => manager.addDocument('en', e, 'filter'));
-
-  await manager.train();
-  manager.save();
-
-  return manager;
-};
 
 const scrapeWHO = async (actions, createContentDigest) => {
   const {createNode} = actions;
@@ -47,66 +9,74 @@ const scrapeWHO = async (actions, createContentDigest) => {
   const $ = cheerio.load(latestRep.data);
 
   const WHORoot = 'https://www.who.int';
-  const latestReportURL = `${WHORoot}${$('#PageContent_C006_Col01 div>p>a').first().attr('href')}`;
+  const latestReportURL = `${WHORoot}${$('#PageContent_C006_Col01 div>p a').first().attr('href')}`;
+
+  const latestReportDateText = latestReportURL.split('situation-reports/')[1].split('-')[0];
+  // console.log(latestReportDate);
+  const latestReportDate = new Date();
+  latestReportDate.setDate(parseInt(latestReportDateText.slice(6, 8), 10));
+  latestReportDate.setMonth(parseInt(latestReportDateText.slice(4, 6), 10) - 1);
+  latestReportDate.setFullYear(parseInt(latestReportDateText.slice(0, 4), 10));
 
   const pdfRes = await crawler(latestReportURL);
 
-  const lines = pdfRes.text.split('\n').filter(n => n);
+  const tableSplitUp = pdfRes.text.split('Table 1.');
+  const tableSplitDown = tableSplitUp[1].split('Numbers include both domestic and repatriated cases');
 
-  const manager = await train();
+  const headerSplit = tableSplitDown[0].split('reported case');
 
-  const statusWords = [
-    'Local',
-    'transmission',
-    'Imported',
-    'cases',
-    'only',
-    'investigation'
-  ]
+  const lines = headerSplit[1].replace(/\s+Community\s+Transmission\s+/g, ' Community Transmission ').split(/\d+ \n/g);
+  const last = lines.length - 1;
 
-  // eslint-disable-next-line @typescript-eslint/prefer-for-of
-  for (let i = 0; i < lines.length; i++) {
-    // eslint-disable-next-line no-await-in-loop
-    const res = await manager.process(lines[i]);
-    if (res.intent === 'keep') {
-      if (!lines[i].includes(')') && lines[i][0] !== '' && lines[i].match(/\d/)) {
-        const split = lines[i].split(' ');
+  lines.forEach((l, i) => {
+    const newLinesRemoved = l.replace(/\n/g, '');
+    const tNamesRemoved = newLinesRemoved.replace(/European Region|Western Pacific Region|Territories\*\*|South-East Asia Region|Eastern Mediterranean Region|Region of the Americas|African Region/g, '').trim();
+    const specCharsRemoved = tNamesRemoved.replace(/\[.*\]/g, '');
 
-        const name = split.filter(w => {
-          if (w && !w.match(/\d/g) && !statusWords.includes(w)) {
-            return true;
-          }
+    const name = specCharsRemoved.split(/ \d/)[0];
+    const [confirmed, confirmedNew, totalDeaths, newDeaths] = specCharsRemoved.split(' ').filter(w => w.match(/\d/g)); 
 
-          return false;
-        }).join(' ');
-        const numbers = split.filter(w => w.match(/\d/g));
+    const parsedData = {
+      name,
+      confirmed,
+      confirmedNew,
+      totalDeaths,
+      newDeaths,
+      latestReportDate,
+    };
 
-        const parsedData = {
-          name,
-          confirmed: numbers[0],
-          confirmedNew: numbers[1],
-          totalDeaths: numbers[2],
-          newDeaths: numbers[3],
-          daysSinceLastReport: numbers[4]
-        }
+    if (i === last) {
+      const WHOTotalNode = {
+        id: `WHO-total`,
+        parent: '__SOURCE__',
+        internal: {
+          type: 'WHOTotal',
+          contentDigest: createContentDigest(parsedData),
+        },
+        children: [],
+        confirmed,
+        confirmedNew,
+        totalDeaths,
+        newDeaths,
+        latestReportDate,
+      };
 
-        if (name && numbers.length === 5) {
-          const WHOCountryNode = {
-            id: `WHO-${i}`,
-            parent: '__SOURCE__',
-            internal: {
-              type: 'WHOCountry',
-              contentDigest: createContentDigest(parsedData)
-            },
-            children: [],
-            ...parsedData
-          };
-
-          createNode(WHOCountryNode);
-        }
-      }
+      createNode(WHOTotalNode);
+    } else {
+      const WHOCountryNode = {
+        id: `WHO-${i}`,
+        parent: '__SOURCE__',
+        internal: {
+          type: 'WHOCountry',
+          contentDigest: createContentDigest(parsedData)
+        },
+        children: [],
+        ...parsedData
+      };
+      
+      createNode(WHOCountryNode);
     }
-  }
+  });
 };
 
 module.exports = scrapeWHO;
