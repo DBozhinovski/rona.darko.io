@@ -3,13 +3,8 @@ import { geolocated } from "react-geolocated";
 import axios from 'axios';
 
 const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcData) => {
-  // console.log(coords);
-  // const testCoords = {latitude: 42.005429, longitude: 21.367797};
   console.log(coords);
-  if (!coords) {
-    return;
-  }
-
+  // const testCoords = {latitude: 42.005429, longitude: 21.367797};
   const res = await axios.get('https://nominatim.openstreetmap.org/reverse', {
     params: {
       lat: coords.latitude,
@@ -43,9 +38,12 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
     whoData: {},
     ecdcData: {},
   });
+
   useEffect(() => {
-    fetchCountryData(coords, setCountryData, whoData, wikiData, ecdcData); // Could be prettier :P
-  }, []);
+    if (coords && coords !== null) {
+      fetchCountryData(coords, setCountryData, whoData, wikiData, ecdcData); // Could be prettier :P
+    }
+  }, [ coords ]);
 
   return (
     <div>
