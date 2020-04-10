@@ -5,7 +5,11 @@ import axios from 'axios';
 const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcData) => {
   // console.log(coords);
   // const testCoords = {latitude: 42.005429, longitude: 21.367797};
-  
+  console.log(coords);
+  if (!coords) {
+    return;
+  }
+
   const res = await axios.get('https://nominatim.openstreetmap.org/reverse', {
     params: {
       lat: coords.latitude,
@@ -13,8 +17,6 @@ const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcD
       format: 'json',
     }
   });
-
-  console.log(whoData);
 
   const countryData = {
     countryName: res.data.address.country,
