@@ -24,8 +24,6 @@ const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcD
       return ecdcData[k]; })(),
   };
 
-  console.log(countryData);
-
   setCountryData(countryData);
 };
 

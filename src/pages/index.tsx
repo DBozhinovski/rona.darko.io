@@ -12,7 +12,8 @@ import { LocalStats } from '../components/LocalStats';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 75ch;
+  max-width: 75ch;
+  padding: 0 2em;
 `;
 
 const IndexPage: React.FunctionComponent = ({ data }) => {
