@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormatNumber } from './FormatNumber';
 
 interface GlobalStatsProp {
   wikiTotal: {
@@ -13,11 +14,9 @@ interface GlobalStatsProp {
     }
   };
   whoTotal: {
-    total: {
-      confimed: number;
-      totalDeaths: number;
-    }
-  }
+    confirmed: number;
+    totalDeaths: number;
+  };
 }
 
 export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp) => {
@@ -33,13 +32,13 @@ export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp)
           </a>
         </h3>
         <p>
-          Cases: {wikiTotal.cases}
+          Cases: <FormatNumber number={wikiTotal.cases} />
         </p>
         <p>
-          Recovered: {wikiTotal.recovered}
+          Recovered: <FormatNumber number={wikiTotal.recovered} />
         </p>
         <p>
-          Deaths: {wikiTotal.deaths}
+          Deaths: <FormatNumber number={wikiTotal.deaths} />
         </p>
         <br />
         <hr />
@@ -51,10 +50,10 @@ export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp)
           </a>
         </h3>
         <p>
-          Cases: {ecdcTotal.total.cases}
+          Cases: <FormatNumber number={ecdcTotal.total.cases} />
         </p>
         <p>
-          Deaths: {ecdcTotal.total.deaths}
+          Deaths: <FormatNumber number={ecdcTotal.total.deaths} />
         </p>
         <br />
         <hr />
@@ -72,10 +71,10 @@ export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp)
           </blockquote>
         </h3>
         <p>
-          Cases: {whoTotal.confirmed}
+          Cases: <FormatNumber number={whoTotal.confirmed} />
         </p>
         <p>
-          Deaths: {whoTotal.totalDeaths}
+          Deaths: <FormatNumber number={whoTotal.totalDeaths} />
         </p>
     </div>
   );

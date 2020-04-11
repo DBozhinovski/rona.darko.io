@@ -1,9 +1,11 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const crawler = require('crawler-request');
+const fs = require('fs');
 
 const scrapeWHO = async (actions, createContentDigest) => {
   const {createNode} = actions;
+  const outFile = {};
 
   const latestRep = await axios.get('https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports');
   const $ = cheerio.load(latestRep.data);
@@ -46,6 +48,13 @@ const scrapeWHO = async (actions, createContentDigest) => {
     };
 
     if (i === last) {
+      outFile.total = {
+        confirmed,
+        confirmedNew,
+        totalDeaths,
+        newDeaths,
+      }
+
       const WHOTotalNode = {
         id: `WHO-total`,
         parent: '__SOURCE__',
@@ -63,6 +72,13 @@ const scrapeWHO = async (actions, createContentDigest) => {
 
       createNode(WHOTotalNode);
     } else {
+      outFile[name] = {
+        confirmed,
+        confirmedNew,
+        totalDeaths,
+        newDeaths,
+      };
+
       const WHOCountryNode = {
         id: `WHO-${i}`,
         parent: '__SOURCE__',
@@ -76,6 +92,10 @@ const scrapeWHO = async (actions, createContentDigest) => {
       
       createNode(WHOCountryNode);
     }
+  });
+
+  fs.writeFile('public/who.json', JSON.stringify(outFile), (err) => {
+    if (err) console.err(err);
   });
 };
 

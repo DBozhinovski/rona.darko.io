@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { geolocated } from "react-geolocated";
 import axios from 'axios';
+import { FormatNumber } from './FormatNumber';
 
 const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcData) => {
   // console.log(coords);
@@ -58,13 +59,13 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
         </a>
       </h3>
       <p>
-        Cases: {countryData.wikiData.cases}
+        Cases: <FormatNumber number={countryData.wikiData.cases} />
       </p>
       <p>
-        Recovered: {countryData.wikiData.recovered}
+        Recovered: <FormatNumber number={countryData.wikiData.recovered} />
       </p>
       <p>
-        Deaths: {countryData.wikiData.deaths}
+        Deaths: <FormatNumber number={countryData.wikiData.deaths} />
       </p>
       <br />
       <hr />
@@ -76,10 +77,10 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
         </a>
       </h3>
       <p>
-        Cases: {countryData.ecdcData.cases}
+        Cases: <FormatNumber number={countryData.ecdcData.cases} />
       </p>
       <p>
-        Deaths: {countryData.ecdcData.deaths}
+        Deaths: <FormatNumber number={countryData.ecdcData.deaths} />
       </p>
       <br />
       <hr />
@@ -91,10 +92,10 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
         </a>
       </h3>
       <p>
-        Cases: {countryData.whoData.cases}
+        Cases: <FormatNumber number={countryData.whoData.cases} />
       </p>
       <p>
-        Deaths: {countryData.whoData.deaths}
+        Deaths: <FormatNumber number={countryData.whoData.deaths} />
       </p>
     </div>
   );

@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable import/no-unassigned-import */
-
-// const axios = require('axios');
-// const cheerio = require('cheerio');
+const fs = require('fs');
 
 const wikiParser = require('./scrapers/wikipedia');
 const whoParser = require('./scrapers/who');
@@ -21,6 +19,10 @@ exports.onCreateNode = async ({
   try {
     const nodeContent = await loadNodeContent(node);
     const ecdcData = JSON.parse(nodeContent.trim());
+    
+    fs.writeFile('public/ecdc.json', nodeContent.trim(), (err) => {
+      if (err) console.err(err);
+    });
 
     ecdcData.records.forEach((country, idx) => {
       const childId = createNodeId(`${node.id}${idx}`);
