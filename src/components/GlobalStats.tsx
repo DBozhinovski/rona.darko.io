@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormatNumber } from './FormatNumber';
+
+import DataTable from './DataTable';
 
 interface GlobalStatsProp {
   wikiTotal: {
@@ -22,60 +23,27 @@ interface GlobalStatsProp {
 export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp) => {
   return (
     <div>
-      <h2>Global</h2>
-        <br /> <br />
-
-        <h3>
-          Wikipedia
-          <a href="https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory#covid19-container">
-          <sup> <small>[source]</small></sup>
-          </a>
-        </h3>
-        <p>
-          Cases: <FormatNumber number={wikiTotal.cases} />
-        </p>
-        <p>
-          Recovered: <FormatNumber number={wikiTotal.recovered} />
-        </p>
-        <p>
-          Deaths: <FormatNumber number={wikiTotal.deaths} />
-        </p>
-        <br />
-        <hr />
-        <br />
-        <h3>
-          ECDC
-          <a href="https://opendata.ecdc.europa.eu/covid19/casedistribution/json/">
-          <sup> <small>[source]</small></sup>
-          </a>
-        </h3>
-        <p>
-          Cases: <FormatNumber number={ecdcTotal.total.cases} />
-        </p>
-        <p>
-          Deaths: <FormatNumber number={ecdcTotal.total.deaths} />
-        </p>
-        <br />
-        <hr />
-        <br />
-        <h3>
-          WHO
-          <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports">
-          <sup> <small>[source]</small></sup>
-          </a>
-          <blockquote>
-            <small>
-              Note: due to the fact that this is parsed via PDF, it may be wrong sometimes. However, the per-country data is still valid.
-              <a href="#"> Click here for details.</a>
-            </small>
-          </blockquote>
-        </h3>
-        <p>
-          Cases: <FormatNumber number={whoTotal.confirmed} />
-        </p>
-        <p>
-          Deaths: <FormatNumber number={whoTotal.totalDeaths} />
-        </p>
+      <DataTable 
+        title='Global'
+        data={[
+          {
+            source: 'Wikipedia',
+            ref: 'https://en.wikipedia.org/wiki/2019%E2%80%9320_coronavirus_pandemic_by_country_and_territory#covid19-container',
+            ...wikiTotal,
+          },
+          {
+            source: 'ECDC',
+            ref: 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/',
+            ...ecdcTotal.total,
+          },
+          {
+            source: 'WHO',
+            ref: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports',
+            cases: whoTotal.confirmed,
+            deaths: whoTotal.totalDeaths,
+          }
+        ]}
+      />
     </div>
   );
 };

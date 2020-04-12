@@ -23,7 +23,6 @@ const scrapeWikipedia = async (actions, createContentDigest) => {
     
     if (i === 1) {
       Array.from(tr.children).filter(c => c.textContent).forEach((c, i) => {
-        console.log(parseInt(c.textContent.replace(/\D/g,''), 10));
         if (totalTable[i]) {
           cData[totalTable[i]] = parseInt(c.textContent.replace(/\D/g,''), 10) || 0;
         }

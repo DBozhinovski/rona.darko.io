@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-// import tw from 'tailwind.macro'
+import tw from 'tailwind.macro'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -12,8 +12,17 @@ import { LocalStats } from '../components/LocalStats';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 75ch;
   padding: 0 2em;
+  align-items: center;
+  width: 100vw;
+
+  div {
+    padding: 2em 0;
+  }
+`;
+
+const Bq = styled.blockquote`
+  ${tw`text-center text-sm w-56`};
 `;
 
 const IndexPage: React.FunctionComponent = ({ data }) => {
@@ -56,20 +65,11 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
     <Layout>
       <Container>
         <SEO title="RONA"/>
-        <h1>Current COVID-19 world wide status</h1>
-        <blockquote>
-          <small>Note: due to scraping times, data sources may show different results.</small>
-          <br/>
-          <small>(Last updated on: {`${lastScrapedAt.year}-${lastScrapedAt.month}-${lastScrapedAt.date} at 16:00 (GMT+1)`})</small>
-        </blockquote>
-        <br />
         <GlobalStats wikiTotal={wikiTotal} whoTotal={whoTotal} ecdcTotal={ecdcTotal} />
-        <br />
-        <br />
-        <hr />
-        <hr />
-        <br />
         <LocalStats wikiData={wikiData} whoData={whoData} ecdcData={ecdcTotal} />
+        <Bq>
+          Last updated on: {`${lastScrapedAt.year}-${lastScrapedAt.month}-${lastScrapedAt.date} at 16:00 (GMT+1)`}
+        </Bq>
       </Container>
     </Layout>
   );

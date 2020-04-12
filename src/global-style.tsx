@@ -16,6 +16,8 @@ export default createGlobalStyle`
     -webkit-font-feature-settings: "pnum";
     font-feature-settings: "pnum";
     font-variant-numeric: proportional-nums;
+    width: 100%;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     ${tw`font-bold`}

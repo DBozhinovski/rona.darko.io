@@ -8,7 +8,7 @@ module.exports = {
     },
     "postcss-import": {},
     "postcss-nested": {},
-    tailwindcss: {},
+    tailwindcss: require("tailwindcss"),
     autoprefixer: {},
   },
 }

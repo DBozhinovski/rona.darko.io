@@ -12,7 +12,6 @@ import tw from "tailwind.macro"
 import GlobalStyle from "../global-style"
 
 import Header from "./header"
-import "./layout.css"
 
 const Footer = styled.footer`
   ${tw`my-10 text-center text-sm`}
