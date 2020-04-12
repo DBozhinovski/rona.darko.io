@@ -17,13 +17,13 @@ const Navigation: React.FunctionComponent = () => {
   return (
     <NavContainer>
       <NavItem>
-        <NavLink href="/">home</NavLink>
+        <NavLink href="/">[home]</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/about">about</NavLink>
+        <NavLink href="/about">[about]</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/datasets">datasets</NavLink>
+        <NavLink href="/datasets">[datasets]</NavLink>
       </NavItem>
     </NavContainer>
   );

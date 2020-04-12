@@ -1,0 +1,46 @@
+---
+SEO: About
+---
+
+# About
+
+Since everyone and their grandma started writing one of these, I thought I'd give
+it a go too. However, since I love overengineering things, it comes with some extra
+tricks up its sleeve:
+
+* It's a [PWA](https://en.wikipedia.org/wiki/Progressive_web_application) - runs offline, is hopefully fast etc.
+* It's a static page - it doesn't communicate with any servers for any of it's
+significant features. The reverse geocoding search is one, but that only pings
+MapQuest for a country name to show you the local data. It doesn't track you 
+or anything, we're not trying to be creepy here :) Also, it's very much FOSS, so please,
+have a look yousrself - https://github.com/DBozhinovski/rona.darko.io
+* By the magic of [Netlify](https://www.netlify.com/) and some automation via [n8n](https://n8n.io/), it's updated once a day,
+at 16:00 GMT+1 for the latest data.
+* It crawls / parses / reads data from multiple sources - currently Wikipedia, ECDC
+and WHO. The data gathering method respectively: crawling, reading their JSON report,
+and finally parsing their godawfully formatted PDF reports. [That was fun](#).
+* ...And as a good citizen of the internets, is very happy to share. No need to crawl
+this page (if you happen to be into that sort of thing) - please, help yourself to the
+nicely [JSON-formatted data](/datasets), so you won't have to do the nasty parsing stuff
+I had to :D
+* And if you do, please drop me a line on [twitter](https://twitter.com/d_bozhinovski) to let me know how you used it :)
+Or whatever, don't use it, say hi anyway :D
+
+I will add a few more things here, stay tuned. The ECDC dataset is particularly nice.
+
+## What's with the dog?
+
+The dog in the logo is the inspiration for this whole thing, along with the admittedly
+stupid name. 
+
+<img src="/o2agat3gbin41.jpg"/>
+
+[Original source](https://www.reddit.com/r/memes/comments/fkyiph/is_that_you_rona/)
+
+Sometimes, doing it doesn't need any special reasons :D
+
+Inspiration can also take the form of a silly dog meme and make you do something
+(debatably) useful.
+
+
+

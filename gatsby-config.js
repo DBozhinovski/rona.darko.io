@@ -13,6 +13,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages/`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -33,6 +40,14 @@ module.exports = {
       options: {
         url: 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/',
         name: 'ecdcStats'
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          pages: require.resolve("./src/templates/post.tsx"),
+        },
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

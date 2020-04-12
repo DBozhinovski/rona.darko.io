@@ -82,20 +82,6 @@ const DataTable = ({ data, title }: DTProp) => {
         <TBody>
           { 
             data.map((item, i) => {
-              // if (i % 2 === 0) {
-              //   return (
-              //     <tr>
-              //       <Td>
-              //         {item.source}
-              //         <sup><small> <a href={item.ref}>[source]</a></small></sup>
-              //       </Td>
-              //       <Td><FormatNumber number={item.cases} /></Td>
-              //       <Td><FormatNumber number={item.deaths} /></Td>
-              //       <Td>{item.recovered ? <FormatNumber number={item.recovered} /> : '-'}</Td>
-              //     </tr>
-              //   );
-              // }
-
               return (
                 <Tr>
                   <Td>
