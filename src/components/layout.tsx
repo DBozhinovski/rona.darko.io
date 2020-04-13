@@ -7,15 +7,15 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
-import tw from "tailwind.macro"
+// import styled from "styled-components"
+// import tw from "tailwind.macro"
 import GlobalStyle from "../global-style"
 
 import Header from "./header"
 
-const Footer = styled.footer`
-  ${tw`my-10 text-center text-sm`}
-`
+// const Footer = styled.footer`
+//   ${tw`my-10 text-center text-sm`}
+// `
 
 const Layout: React.FunctionComponent = ({ children }) => {
   return (

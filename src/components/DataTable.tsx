@@ -57,7 +57,7 @@ const Th = styled.th`
 `;
 
 const Title = styled.h2`
-  ${tw`text-center text-2xl my-4 underline`}
+  ${tw`text-center text-2xl my-4 underline`};
 `;
 
 const DataTable = ({ data, title }: DTProp) => {

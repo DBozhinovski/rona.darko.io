@@ -32,7 +32,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
-        cache_busting_mode: 'none',
       },
     },
     {
@@ -48,17 +47,6 @@ module.exports = {
         defaultLayouts: {
           pages: require.resolve("./src/templates/post.tsx"),
         },
-      },
-    },
-    {
-      resolve: `gatsby-theme-tailwindcss`,
-      options: {
-        postCssPlugins: [
-          require("autoprefixer"),
-          require("tailwindcss")
-        ],
-        cssLoaderOptions: {},
-        emotionOptions: {},
       },
     },
     {
@@ -78,5 +66,6 @@ module.exports = {
       }
     },
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-postcss`,
   ],
 }

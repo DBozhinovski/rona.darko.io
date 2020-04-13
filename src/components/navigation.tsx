@@ -1,29 +1,33 @@
 import React from "react"
 import styled from "styled-components"
 import tw from "tailwind.macro"
+import { Link } from "gatsby"
 
 const NavContainer = styled.ul`
   ${tw`flex items-center justify-center`};
 `
 
 const NavItem = styled.li`
-  ${tw`flex p-3`};
+  ${tw`flex p-2`};
 `
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
 `
 
 const Navigation: React.FunctionComponent = () => {
   return (
     <NavContainer>
       <NavItem>
-        <NavLink href="/">[home]</NavLink>
+        <NavLink to="/">[home]</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/about">[about]</NavLink>
+        <NavLink to="/manual-search">[search]</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/datasets">[datasets]</NavLink>
+        <NavLink to="/about">[about]</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink to="/datasets">[datasets]</NavLink>
       </NavItem>
     </NavContainer>
   );

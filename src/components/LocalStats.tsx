@@ -1,8 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { geolocated } from "react-geolocated";
 import axios from 'axios';
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
+import { Link } from "gatsby"
 
 import DataTable from './DataTable';
+
+const WarningBox = styled.div`
+  ${tw`bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 m-4`};
+  max-width: 75ch;
+
+  p {
+    ${tw`p-4`};
+    text-align: center;
+  }
+`;
 
 
 const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcData) => {
@@ -30,8 +43,25 @@ const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcD
 };
 
 const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailable, isGeolocationEnabled, coords }) => {
-  if (!isGeolocationAvailable) return <div>Your browser does not support Geolocation.</div>;
-  if (!isGeolocationEnabled) return <div>Geolocation is not enabled (or it produced an error), we can't show you the local data for your country.</div>;
+  if (!isGeolocationAvailable) return (
+    <div>
+      <WarningBox>
+        <p>
+          Your browser does not support Geolocation.
+        </p>
+      </WarningBox>
+    </div>
+  );
+  if (!isGeolocationEnabled) return (
+    <div>
+      <WarningBox>
+        <p>
+          Geolocation is not enabled (or it produced an error) - we can't show you the local data for your country.
+          <Link to="/manual-search"> Look it up manually?</Link>
+        </p>
+      </WarningBox>
+    </div>
+  );
 
   const [countryData, setCountryData] = useState({
     countryName: '',

@@ -14,7 +14,7 @@ const Subtitle = styled.p`
 `;
 
 const LogoStyle = styled.div`
-  ${tw`flex flex-col items-center justify-start my-2`}
+  ${tw`flex flex-col items-center justify-start my-2`};
 `;
 
 const Img = styled.img`
