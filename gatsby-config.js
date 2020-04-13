@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `greater-gatsby`,
-        short_name: `greater-gatsby`,
+        name: `Rona`,
+        short_name: `Rona`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -50,6 +50,23 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-theme-tailwindcss`,
+      options: {
+        postCssPlugins: [
+          require("autoprefixer"),
+          require("tailwindcss")
+        ],
+        cssLoaderOptions: {},
+        emotionOptions: {},
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     {
@@ -61,6 +78,5 @@ module.exports = {
       }
     },
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-postcss`,
   ],
 }
