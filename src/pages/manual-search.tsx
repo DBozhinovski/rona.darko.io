@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
+import Fuse from 'fuse.js';
+
 import tw from 'tailwind.macro';
 
 import Layout from '../components/layout';
@@ -79,27 +81,32 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
     whoResults: [],
   });
 
+  const wikiSearch = new Fuse(wikiData, { keys: ['name'], threshold: 0.2, minMatchCharLength: 3 });
+  const ecdcSearch = new Fuse(Object.keys(ecdcTotal), { threshold: 0.2, minMatchCharLength: 3 });
+  const whoSearch = new Fuse(Object.keys(whoData), { threshold: 0.2, minMatchCharLength: 3 });
+
   useEffect(() => {
     if (name.length > 2) {
+      const test = wikiSearch.search(name);
+      console.log(test);
+
       setResults({
-        wikipediaResults: wikiData.filter(c => c.name.toLowerCase().search(name) !== -1),
+        wikipediaResults: wikiSearch.search(name).map(i => i.item),
         ecdcResults: (() => {
           const res = [];
-          const keys = Object.keys(ecdcTotal).filter(c => c.toLowerCase().search(name) !== -1);
+          const keys = ecdcSearch.search(name).map(i => i.item);
           keys.forEach(k => res.push(Object.assign({}, { name: k }, ecdcTotal[k])));
 
           return res;
         })(),
         whoResults: (() => { 
           const res = [];
-          const keys = Object.keys(whoData).filter(c => c.toLowerCase().search(name) !== -1);
+          const keys = whoSearch.search(name).map(i => i.item);
           keys.forEach(k => res.push(Object.assign({}, { name: k }, whoData[k])));
 
           return res; 
         })(),
       });
-
-      console.log(results);
     }
   }, [ name ]);
 

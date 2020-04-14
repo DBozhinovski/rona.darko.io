@@ -9,6 +9,10 @@ const Results = styled.div`
 
 const ResGroup = styled.div`
   ${tw`m-10 bg-gray-100`};
+
+  p {
+    ${tw`p-5`};
+  }
 `;
 
 const ResGroupTitle = styled.h4`
@@ -16,7 +20,7 @@ const ResGroupTitle = styled.h4`
 `;
 
 const SourceTitle = styled.h2`
-  ${tw`text-center text-base text-green-400`};
+  ${tw`text-center text-base py-4 mb-2 text-green-400 border-b-2 border-t-2 border-dashed border-green-200`};
 `
 
 const Data = styled.ul`
@@ -26,46 +30,48 @@ const Data = styled.ul`
 export const SearchResults = ({ wikipediaResults, ecdcResults, whoResults }) => {
   return (
     <Results>
-      <SourceTitle>Wikipedia</SourceTitle>
-      {
-        wikipediaResults.map(wR => {
+      <SourceTitle key={`wiki-res`}>Wikipedia</SourceTitle>
+      { wikipediaResults.length === 0 
+        ? <ResGroup><p>No results found.</p></ResGroup>
+        : wikipediaResults.map((wR, i)=> {
           return (
-            <ResGroup>
+            <ResGroup key={`wiki-res-${wR.name}`}>
               <ResGroupTitle>{wR.name}</ResGroupTitle>
               <Data>
-                <li>Cases: {wR.cases}</li>
-                <li>Deaths: {wR.deaths}</li>
-                <li>Recovered: {wR.recovered}</li>
+                <li key={`wiki-${wR.name}-cases`}>Cases: {wR.cases}</li>
+                <li key={`wiki-${wR.name}-deaths`}>Deaths: {wR.deaths}</li>
+                <li key={`wiki-${wR.name}-recovered`}>Recovered: {wR.recovered}</li>
               </Data>
             </ResGroup>
           );
         })
       }
-      <SourceTitle>ECDC</SourceTitle>
-      {
-        ecdcResults.map(wR => {
+    
+      <SourceTitle key={`ecdc-res`}>ECDC</SourceTitle>
+      { ecdcResults.length === 0
+        ? <ResGroup><p>No results found.</p></ResGroup>
+        : ecdcResults.map(eR => {
           return (
-            <ResGroup>
-              <ResGroupTitle>{wR.name}</ResGroupTitle>
+            <ResGroup key={`ecdc-res-${eR.name}`}>
+              <ResGroupTitle>{eR.name}</ResGroupTitle>
               <Data>
-                <li>Cases: {wR.cases}</li>
-                <li>Deaths: {wR.deaths}</li>
-                <li>Recovered: {wR.recovered}</li>
+                <li key={`ecdc-${eR.name}-cases`}>Cases: {eR.cases}</li>
+                <li key={`wiki-${eR.name}-deaths`}>Deaths: {eR.deaths}</li>
               </Data>
             </ResGroup>
           );
         })
       }
-      <SourceTitle>WHO</SourceTitle>
-      {
-        whoResults.map(wR => {
+      <SourceTitle key={`who-res`}>WHO</SourceTitle>
+      { whoResults.length === 0
+        ? <ResGroup><p>No results found.</p></ResGroup>
+        : whoResults.map(wR => {
           return (
-            <ResGroup>
+            <ResGroup key={`who-res-${wR.name}`}>
               <ResGroupTitle>{wR.name}</ResGroupTitle>
               <Data>
-                <li>Cases: {wR.cases}</li>
-                <li>Deaths: {wR.deaths}</li>
-                <li>Recovered: {wR.recovered}</li>
+                <li key={`who-${wR.name}-cases`}>Cases: {wR.cases}</li>
+                <li key={`who-${wR.name}-deaths`}>Deaths: {wR.deaths}</li>
               </Data>
             </ResGroup>
           );

@@ -11,6 +11,7 @@
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-styled-components": "^1.10.7",
     "crawler-request": "^1.2.2",
+    "fuse.js": "^5.1.0",
     "gatsby": "^2.18.12",
     "gatsby-cli": "^2.8.26",
     "gatsby-image": "^2.2.34",
@@ -29,6 +30,7 @@
     "numbro": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.8",
+    "react-charts": "^2.0.0-beta.6",
     "react-dom": "^16.8",
     "react-geolocated": "^3.0.1",
     "react-helmet": "^5.2.1",
@@ -90,8 +92,7 @@
     "url": "https://github.com/rbutera/greater-gatsby/issues"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "xo --fix",
