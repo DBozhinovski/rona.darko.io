@@ -92,3 +92,50 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
     ...lastScrapedAtNode,
   });
 }
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  const result = await graphql(`
+    query {
+      allEcdcCountry {
+        edges {
+          node {
+            cases
+            countriesAndTerritories
+            deaths
+            countryId
+            countryterritoryCode
+            dateReported
+          }
+        }
+      }
+    }
+  `);
+
+  const groups = result.data.allEcdcCountry.edges.reduce((acc, r) => {
+    const report = r.node;
+
+    if (acc[report.countryterritoryCode]) {
+      acc[report.countryterritoryCode].push(report);
+    } else {
+      acc[report.countryterritoryCode] = [report];
+    }
+
+    return acc;
+  }, {});
+
+  // console.log(groups);
+  // console.log(JSON.stringify(result, null, 4))
+
+  Object.keys(groups).forEach((k) => {
+    createPage({
+      path: `/reports/${k}/`,
+      component: require.resolve(`./src/templates/report.tsx`),
+      context: {
+        countryData: groups[k],
+        name: groups[k][0].countriesAndTerritories,
+      }
+    });
+  });
+}

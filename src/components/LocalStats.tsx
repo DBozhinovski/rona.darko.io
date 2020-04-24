@@ -37,6 +37,10 @@ const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcD
     ecdcData: (() => { 
       const k = Object.keys(ecdcData).find(c => c.includes(res.data.address.country));
       return ecdcData[k]; })(),
+    countryCode: (() => { 
+      const k = Object.keys(ecdcData).find(c => c.includes(res.data.address.country));
+      return ecdcData[k].countryCode; 
+    })(),
   };
 
   setCountryData(countryData);
@@ -66,6 +70,7 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
         cases: 0,
         deaths: 0
       },
+      countryCode: '',
     });
   
     useEffect(() => {
@@ -98,6 +103,7 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
                   }
                 ]}
               />
+              <Link to={`/reports/${countryData.countryCode}`}>ECDC detailed report</Link>
             </div>
           );
       

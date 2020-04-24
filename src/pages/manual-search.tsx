@@ -42,11 +42,12 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
   const wikiTotal = data.allWikiCountryTotal.nodes[0];
   const wikiData = data.allWikiCountry.nodes;
   const ecdcTotal = data.allEcdcCountry.nodes.reduce((acc, country) => {
-    const existing = acc[country.countriesAndTerritories] || { cases: 0, deaths: 0 };
+    const existing = acc[country.countriesAndTerritories] || { cases: 0, deaths: 0, countryCode: country.countryterritoryCode  };
 
     acc[country.countriesAndTerritories] = {
       cases: existing.cases + parseInt(country.cases, 10),
       deaths: existing.deaths + parseInt(country.deaths, 10),
+      countryCode: country.countryterritoryCode
     };
 
     acc.total = {
@@ -96,6 +97,7 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
           const res = [];
           const keys = ecdcSearch.search(name).map(i => i.item);
           keys.forEach(k => res.push(Object.assign({}, { name: k }, ecdcTotal[k])));
+          console.log(res);
 
           return res;
         })(),
@@ -120,7 +122,7 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
         </Form>
         { name.length > 3 
           ? (
-            <SearchResults wikipediaResults={results.wikipediaResults} ecdcResults={results.whoResults} whoResults={results.whoResults} />
+            <SearchResults wikipediaResults={results.wikipediaResults} ecdcResults={results.ecdcResults} whoResults={results.whoResults} />
           ) : <></>
         }
         <Bq>

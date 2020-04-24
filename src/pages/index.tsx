@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import tw from 'tailwind.macro'
 
 import Layout from '../components/layout'
@@ -29,11 +29,12 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
   const wikiTotal = data.allWikiCountryTotal.nodes[0];
   const wikiData = data.allWikiCountry.nodes;
   const ecdcTotal = data.allEcdcCountry.nodes.reduce((acc, country) => {
-    const existing = acc[country.countriesAndTerritories] || { cases: 0, deaths: 0 };
+    const existing = acc[country.countriesAndTerritories] || { cases: 0, deaths: 0, countryCode: country.countryterritoryCode };
 
     acc[country.countriesAndTerritories] = {
       cases: existing.cases + parseInt(country.cases, 10),
       deaths: existing.deaths + parseInt(country.deaths, 10),
+      countryCode: country.countryterritoryCode,
     };
 
     acc.total = {

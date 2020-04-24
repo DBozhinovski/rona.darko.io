@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
+import { Link } from 'gatsby'
 
 const Results = styled.div`
   ${tw`flex flex-col bg-white shadow-md rounded my-4 mx-10`};
@@ -8,7 +9,7 @@ const Results = styled.div`
 `;
 
 const ResGroup = styled.div`
-  ${tw`m-10 bg-gray-100`};
+  ${tw`flex flex-col items-center justify-center m-10 bg-gray-100`};
 
   p {
     ${tw`p-5`};
@@ -58,6 +59,7 @@ export const SearchResults = ({ wikipediaResults, ecdcResults, whoResults }) => 
                 <li key={`ecdc-${eR.name}-cases`}>Cases: {eR.cases}</li>
                 <li key={`wiki-${eR.name}-deaths`}>Deaths: {eR.deaths}</li>
               </Data>
+              <Link to={`/reports/${eR.countryCode}`}>[ECDC detailed report]</Link>
             </ResGroup>
           );
         })
