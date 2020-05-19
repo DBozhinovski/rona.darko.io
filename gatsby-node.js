@@ -57,7 +57,7 @@ exports.sourceNodes = async ({actions, createContentDigest}) => {
   const { createNode } = actions;
 
   await wikiParser(actions, createContentDigest);
-  await whoParser(actions, createContentDigest);
+  // await whoParser(actions, createContentDigest);
   
   const lastScrapedAt = new Date();
 

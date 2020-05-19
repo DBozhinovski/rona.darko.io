@@ -27,7 +27,7 @@ const Logo: React.FunctionComponent = () => {
       <Img src={Emblem} className="w-48" />
       <Text>'Rona</Text>
       <Subtitle>
-        Current COVID-19 world wide status, gathered from ECDC, WHO and Wikipedia
+        Current COVID-19 world wide status, gathered from ECDC, <s>WHO</s> and Wikipedia
         (once per day)
       </Subtitle>
     </LogoStyle>

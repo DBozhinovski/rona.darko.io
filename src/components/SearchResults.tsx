@@ -64,21 +64,6 @@ export const SearchResults = ({ wikipediaResults, ecdcResults, whoResults }) => 
           );
         })
       }
-      <SourceTitle key={`who-res`}>WHO</SourceTitle>
-      { whoResults.length === 0
-        ? <ResGroup><p>No results found.</p></ResGroup>
-        : whoResults.map(wR => {
-          return (
-            <ResGroup key={`who-res-${wR.name}`}>
-              <ResGroupTitle>{wR.name}</ResGroupTitle>
-              <Data>
-                <li key={`who-${wR.name}-cases`}>Cases: {wR.cases}</li>
-                <li key={`who-${wR.name}-deaths`}>Deaths: {wR.deaths}</li>
-              </Data>
-            </ResGroup>
-          );
-        })
-      }
     </Results>
   )
 };

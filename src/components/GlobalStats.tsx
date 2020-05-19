@@ -14,10 +14,10 @@ interface GlobalStatsProp {
       deaths: number;
     }
   };
-  whoTotal: {
-    confirmed: number;
-    totalDeaths: number;
-  };
+  // whoTotal: {
+  //   confirmed: number;
+  //   totalDeaths: number;
+  // };
 }
 
 export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp) => {
@@ -36,12 +36,12 @@ export const GlobalStats = ({ wikiTotal, ecdcTotal, whoTotal }: GlobalStatsProp)
             ref: 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/',
             ...ecdcTotal.total,
           },
-          {
-            source: 'WHO',
-            ref: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports',
-            cases: whoTotal.confirmed,
-            deaths: whoTotal.totalDeaths,
-          }
+          // {
+          //   source: 'WHO',
+          //   ref: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports',
+          //   cases: whoTotal.confirmed,
+          //   deaths: whoTotal.totalDeaths,
+          // }
         ]}
       />
     </div>

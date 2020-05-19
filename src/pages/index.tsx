@@ -45,20 +45,20 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
     return acc;
   }, { total: { deaths: 0, cases: 0 } });
 
-  const whoData = data.allWhoCountry.nodes.reduce((acc, country) => {
-    const totalCases = parseInt(country.confirmed, 10);
-    const totalDeaths = parseInt(country.totalDeaths, 10);
+  // const whoData = data.allWhoCountry.nodes.reduce((acc, country) => {
+  //   const totalCases = parseInt(country.confirmed, 10);
+  //   const totalDeaths = parseInt(country.totalDeaths, 10);
 
-    acc[country.name] = { cases: totalCases, deaths: totalDeaths };
-    acc.total = {
-      deaths: acc.total.deaths + totalDeaths,
-      cases: acc.total.cases + totalCases,
-    }
+  //   acc[country.name] = { cases: totalCases, deaths: totalDeaths };
+  //   acc.total = {
+  //     deaths: acc.total.deaths + totalDeaths,
+  //     cases: acc.total.cases + totalCases,
+  //   }
 
-    return acc;
-  }, { total: { deaths: 0, cases: 0 } });
+  //   return acc;
+  // }, { total: { deaths: 0, cases: 0 } });
 
-  const whoTotal = data.allWhoTotal.nodes[0];
+  // const whoTotal = data.allWhoTotal.nodes[0];
 
   const lastScrapedAt = data.allLastScraped.nodes[0];
 
@@ -66,8 +66,8 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
     <Layout>
       <Container>
         <SEO title="RONA"/>
-        <GlobalStats wikiTotal={wikiTotal} whoTotal={whoTotal} ecdcTotal={ecdcTotal} />
-        <LocalStats wikiData={wikiData} whoData={whoData} ecdcData={ecdcTotal} />
+        <GlobalStats wikiTotal={wikiTotal} ecdcTotal={ecdcTotal} />
+        <LocalStats wikiData={wikiData} ecdcData={ecdcTotal} />
         <Bq>
           Last updated on: {`${lastScrapedAt.year}-${lastScrapedAt.month}-${lastScrapedAt.date} at 16:00 (GMT+1)`}
         </Bq>
@@ -88,24 +88,6 @@ export const query = graphql`
         countryId
         countryterritoryCode
         dateReported
-      }
-    }
-    allWhoCountry {
-      nodes {
-        confirmed
-        confirmedNew
-        name
-        newDeaths
-        totalDeaths
-      }
-    }
-    allWhoTotal {
-      nodes {
-        confirmed
-        confirmedNew
-        newDeaths
-        totalDeaths
-        latestReportDate
       }
     }
     allWikiCountry {

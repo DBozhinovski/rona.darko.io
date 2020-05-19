@@ -18,7 +18,7 @@ const WarningBox = styled.div`
 `;
 
 
-const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcData) => {
+const fetchCountryData = async (coords, setCountryData, /* whoData, */ wikiData, ecdcData) => {
   // const testCoords = {latitude: 42.005429, longitude: 21.367797};
   const res = await axios.get('https://nominatim.openstreetmap.org/reverse', {
     params: {
@@ -31,9 +31,9 @@ const fetchCountryData = async (coords, setCountryData, whoData, wikiData, ecdcD
   const countryData = {
     countryName: res.data.address.country,
     wikiData: wikiData.find(c => c.name.includes(res.data.address.country)),
-    whoData: (() => { 
-      const k = Object.keys(whoData).find(c => c.includes(res.data.address.country));
-      return whoData[k]; })(),
+    // whoData: (() => { 
+    //   const k = Object.keys(whoData).find(c => c.includes(res.data.address.country));
+    //   return whoData[k]; })(),
     ecdcData: (() => { 
       const k = Object.keys(ecdcData).find(c => c.includes(res.data.address.country));
       return ecdcData[k]; })(),
@@ -54,7 +54,7 @@ const showWarningBox = (message) => (
   </WarningBox>
 );
 
-const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailable, isGeolocationEnabled, coords }) => {
+const LocalStatsComponent = ({ wikiData, /* whoData, */ ecdcData, isGeolocationAvailable, isGeolocationEnabled, coords }) => {
     const [countryData, setCountryData] = useState({
       countryName: '',
       wikiData: {
@@ -75,7 +75,7 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
   
     useEffect(() => {
       if (coords && coords !== null) {
-        fetchCountryData(coords, setCountryData, whoData, wikiData, ecdcData);
+        fetchCountryData(coords, setCountryData, /* whoData,  */ wikiData, ecdcData);
       }
     }, [ coords, isGeolocationEnabled, isGeolocationAvailable ]);
   
@@ -96,11 +96,11 @@ const LocalStatsComponent = ({ wikiData, whoData, ecdcData, isGeolocationAvailab
                     ref: 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/',
                     ...countryData.ecdcData,
                   },
-                  {
-                    source: 'WHO',
-                    ref: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports',
-                    ...countryData.whoData,
-                  }
+                  // {
+                  //   source: 'WHO',
+                  //   ref: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports',
+                  //   ...countryData.whoData,
+                  // }
                 ]}
               />
               <Link to={`/reports/${countryData.countryCode}`}>ECDC detailed report</Link>

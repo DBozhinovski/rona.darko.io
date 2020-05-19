@@ -58,20 +58,20 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
     return acc;
   }, { total: { deaths: 0, cases: 0 } });
 
-  const whoData = data.allWhoCountry.nodes.reduce((acc, country) => {
-    const totalCases = parseInt(country.confirmed, 10);
-    const totalDeaths = parseInt(country.totalDeaths, 10);
+  // const whoData = data.allWhoCountry.nodes.reduce((acc, country) => {
+  //   const totalCases = parseInt(country.confirmed, 10);
+  //   const totalDeaths = parseInt(country.totalDeaths, 10);
 
-    acc[country.name] = { cases: totalCases, deaths: totalDeaths };
-    acc.total = {
-      deaths: acc.total.deaths + totalDeaths,
-      cases: acc.total.cases + totalCases,
-    }
+  //   acc[country.name] = { cases: totalCases, deaths: totalDeaths };
+  //   acc.total = {
+  //     deaths: acc.total.deaths + totalDeaths,
+  //     cases: acc.total.cases + totalCases,
+  //   }
 
-    return acc;
-  }, { total: { deaths: 0, cases: 0 } });
+  //   return acc;
+  // }, { total: { deaths: 0, cases: 0 } });
 
-  const whoTotal = data.allWhoTotal.nodes[0];
+  // const whoTotal = data.allWhoTotal.nodes[0];
 
   const lastScrapedAt = data.allLastScraped.nodes[0];
 
@@ -79,12 +79,11 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
   const [results, setResults] = useState({
     wikipediaResults: [],
     ecdcResults: [],
-    whoResults: [],
   });
 
   const wikiSearch = new Fuse(wikiData, { keys: ['name'], threshold: 0.2, minMatchCharLength: 3 });
   const ecdcSearch = new Fuse(Object.keys(ecdcTotal), { threshold: 0.2, minMatchCharLength: 3 });
-  const whoSearch = new Fuse(Object.keys(whoData), { threshold: 0.2, minMatchCharLength: 3 });
+  // const whoSearch = new Fuse(Object.keys(whoData), { threshold: 0.2, minMatchCharLength: 3 });
 
   useEffect(() => {
     if (name.length > 2) {
@@ -101,13 +100,13 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
 
           return res;
         })(),
-        whoResults: (() => { 
-          const res = [];
-          const keys = whoSearch.search(name).map(i => i.item);
-          keys.forEach(k => res.push(Object.assign({}, { name: k }, whoData[k])));
+        // whoResults: (() => { 
+        //   const res = [];
+        //   const keys = whoSearch.search(name).map(i => i.item);
+        //   keys.forEach(k => res.push(Object.assign({}, { name: k }, whoData[k])));
 
-          return res; 
-        })(),
+        //   return res; 
+        // })(),
       });
     }
   }, [ name ]);
@@ -122,7 +121,7 @@ const ManualSearch: React.FunctionComponent = ({ data }) => {
         </Form>
         { name.length > 3 
           ? (
-            <SearchResults wikipediaResults={results.wikipediaResults} ecdcResults={results.ecdcResults} whoResults={results.whoResults} />
+            <SearchResults wikipediaResults={results.wikipediaResults} ecdcResults={results.ecdcResults} />
           ) : <></>
         }
         <Bq>
@@ -145,24 +144,6 @@ export const query = graphql`
         countryId
         countryterritoryCode
         dateReported
-      }
-    }
-    allWhoCountry {
-      nodes {
-        confirmed
-        confirmedNew
-        name
-        newDeaths
-        totalDeaths
-      }
-    }
-    allWhoTotal {
-      nodes {
-        confirmed
-        confirmedNew
-        newDeaths
-        totalDeaths
-        latestReportDate
       }
     }
     allWikiCountry {
