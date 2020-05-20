@@ -13,7 +13,7 @@
     "crawler-request": "^1.2.2",
     "date-fns": "^2.12.0",
     "fuse.js": "^5.1.0",
-    "gatsby": "^2.18.12",
+    "gatsby": "^2.22.3",
     "gatsby-cli": "^2.8.26",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
@@ -75,7 +75,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
